@@ -49,6 +49,14 @@ void request_handler::handle_request(const request& req, reply& rep)
     request_path += "index.html";
   }
 
+
+  std::size_t qp = request_path.find("?");
+  if(qp != std::string::npos)
+  {
+    request_path.resize(qp);
+  }
+
+
   // Determine the file extension.
   std::size_t last_slash_pos = request_path.find_last_of("/");
   std::size_t last_dot_pos = request_path.find_last_of(".");
@@ -58,11 +66,6 @@ void request_handler::handle_request(const request& req, reply& rep)
     extension = request_path.substr(last_dot_pos + 1);
   }
 
-  std::size_t qp = request_path.find("?");
-  if(qp != std::string::npos)
-  {
-    request_path.resize(qp);
-  }
 
   // Open the file to send back.
   std::string full_path = doc_root_ + request_path;
