@@ -11,7 +11,8 @@ set(CMAKE_CXX_COMPILER clang)
 
 set (BOOST_COMPONENTS 
 	thread
-	filesystem)
+	filesystem
+	system)
 
 include_directories( "/usr/local/include" )
 
