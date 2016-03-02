@@ -46,7 +46,7 @@ void connection::handle_read(const boost::system::error_code& e,
   if (!e)
   {
     boost::tribool result;
-    std::copy(buffer_.begin(),buffer_.end(),std::ostream_iterator<char>(std::cout,""));
+    //std::copy(buffer_.begin(),buffer_.end(),std::ostream_iterator<char>(std::cout,""));
     boost::tie(result, boost::tuples::ignore) = request_parser_.parse(
         request_, buffer_.data(), buffer_.data() + bytes_transferred);
 
